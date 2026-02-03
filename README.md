@@ -1,8 +1,8 @@
-⌨️ Typing Test App
+# ⌨️ Typing Test App
 
 - A web-based typing test application that helps users measure typing speed and accuracy in real time.
 
-🚀 Features
+## 🚀 Features
 
 - Real-time typing speed (WPM)
 
@@ -14,7 +14,7 @@
 
 - Restart test functionality
 
-🛠️ Built With
+## 🛠️ Built With
 
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" />
