@@ -1,103 +1,207 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+:root{
+  --bg1:#0f3d91;
+  --bg2:#1565c0;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+
+  --primary:#1565c0;
+  --primary2:#1d78e6;
+
+  --border:#e6edf7;
+
+  --r1:16px;
+  --r2:12px;
+
+  --shadow: 0 20px 60px rgba(2, 8, 23, .25);
+}
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 body{
-    background-color: #1565c0;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(255,255,255,.12), transparent 55%),
+    radial-gradient(800px 500px at 100% 10%, rgba(0,0,0,.12), transparent 55%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  display:grid;
+  place-items:center;
+  padding:24px;
 }
 
 .container{
-    width: 80vw;
-    padding: 50px 30px;
-    background-color: #fff;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  width:min(900px, 96vw);
+  padding:28px 26px;
+  background:var(--card);
+  border-radius:var(--r1);
+  box-shadow:var(--shadow);
+  border:1px solid rgba(15, 23, 42, .06);
 }
 
+/* Top stats feels like a real header bar */
 .stats{
-    text-align: right;
-    font-size: 18px;
-    margin-bottom: 30px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:16px;
 }
-
 .stats span{
-    font-weight: 600;
+  font-weight:700;
+  color:var(--text);
 }
 
+/* Quote block has a readable rhythm */
 #quote{
-    text-align: justify;
-    margin: 50px 0 30px 0;
+  text-align:left;
+  line-height:1.75;
+  font-size:16px;
+  color:#1f2937;
+  background:#f6f9ff;
+  border:1px solid var(--border);
+  padding:16px 14px;
+  border-radius:var(--r2);
+  margin:18px 0 14px;
 }
 
-
+/* Textarea like a modern input */
 textarea{
-    resize: none;
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px 5px;
-    font-size: 16px;
+  resize:none;
+  width:100%;
+  border-radius:var(--r2);
+  padding:12px 12px;
+  font-size:15px;
+  line-height:1.55;
+  border:1px solid var(--border);
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+textarea::placeholder{color:#94a3b8}
+textarea:focus{
+  border-color:rgba(21,101,192,.45);
+  box-shadow:0 0 0 4px rgba(21,101,192,.12);
 }
 
+/* Buttons feel clickable (hover + active + focus) */
 button{
-    float: right;
-    margin-top: 20px;
-    background-color: #1565c0;
-    color: #fff;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    font-size: 18px;
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform .12s ease, background .15s ease, box-shadow .15s ease;
 }
 
+button:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 4px rgba(21,101,192,.18);
+}
+
+/* Main action button */
+button#btn,
+button.start-btn,
+button.primary{
+  float:right;
+  margin-top:14px;
+  background:linear-gradient(180deg, var(--primary2), var(--primary));
+  color:#fff;
+  box-shadow:0 10px 22px rgba(21,101,192,.25);
+}
+button#btn:hover,
+button.start-btn:hover,
+button.primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 26px rgba(21,101,192,.28);
+}
+button#btn:active,
+button.start-btn:active,
+button.primary:active{
+  transform:translateY(0);
+  box-shadow:0 8px 18px rgba(21,101,192,.22);
+}
+
+/* Result section */
 .result{
-    margin-top: 40px;
-    display: none;
+  margin-top:22px;
+  display:none;
+  border-top:1px solid var(--border);
+  padding-top:18px;
 }
 
 .result h3{
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 22px;
+  text-align:center;
+  margin-bottom:14px;
+  font-size:18px;
+  color:var(--text);
 }
 
+/* Metric cards instead of plain row */
 .wrapper{
-    display: flex;
-    justify-content: space-around;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+
+.wrapper > div{
+  border:1px solid var(--border);
+  background:#fbfdff;
+  padding:14px 12px;
+  border-radius:14px;
+  text-align:center;
 }
 
 .wrapper span{
-    font-weight: 600;
+  display:block;
+  font-weight:800;
+  font-size:18px;
+  margin-top:6px;
 }
 
-.success{
-    color: #44b267;
+/* Feedback colors */
+.success{color:#16a34a;}
+.fail{color:#e11d48;}
+
+/* Difficulty buttons as segmented control */
+.difficulty{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
 }
 
-.fail{
-    color: #e81c4e;
+.difficulty button{
+  background:#f1f5f9;
+  color:#0f172a;
+  border:1px solid var(--border);
+  padding:9px 12px;
+  border-radius:999px;
+  font-weight:700;
+}
+.difficulty button:hover{
+  background:#eaf2ff;
+  transform:translateY(-1px);
+}
+.difficulty button.active{
+  background:rgba(21,101,192,.12);
+  border-color:rgba(21,101,192,.28);
+  color:var(--primary);
 }
 
-.difficulty {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.difficulty button {
-  background: #e0e0e0;
-  color: #333;
-}
-
-.difficulty button.active {
-  background: #1565c0;
-  color: #fff;
+/* Mobile tweaks */
+@media (max-width: 720px){
+  .container{padding:22px 18px;}
+  .wrapper{grid-template-columns:1fr;}
+  button#btn,
+  button.start-btn,
+  button.primary{float:none;width:100%;}
 }
